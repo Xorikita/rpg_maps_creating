@@ -1,16 +1,18 @@
 import React, {useState} from "react";
+import s from "./Map.module.css"
+import Cell from "./Cell/Cell";
 
    function Map(props){
-    const [range, setRange] = useState(props.width*props.height)
+    const [width, setWidth] = useState(props.width)
     const rows_ind = Array.from({length: props.height}, (_, index) => index + 1);
     const colums_ind = Array.from({length: props.width}, (_, index) => index + 1);
     return(
-        <div className="map" style={{display:'grid', gridTemplateColumns: 'repeat('+props.width+',10px)', gridTemplateRows: 'repeat('+props.height+',10px)'}}>
+        <div className={s.map} style={{gridTemplateColumns: 'repeat('+props.width+','+props.cell+'px)', gridTemplateRows: 'repeat('+props.height+','+props.cell+'px)'}}>
             {colums_ind.map((item) => {
                     return(
                         rows_ind.map((item) => {
                             return(
-                                <div key={item} style={{border:'2px solid black', width:'10px',height:'10px'}}></div>
+                                <Cell key={item}/>
                             )
                         })
                     )

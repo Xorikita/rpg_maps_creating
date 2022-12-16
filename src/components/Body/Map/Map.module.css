@@ -1,0 +1,12 @@
+.map{
+    display: grid;
+    overflow: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 36, 136, 0.3);
+}
+
+.map::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: rgba(0, 36, 136, 0.3);
+  }
