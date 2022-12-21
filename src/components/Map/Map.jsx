@@ -8,11 +8,11 @@ import Cell from "./Cell/Cell";
     const colums_ind = Array.from({length: props.width}, (_, index) => index + 1);
     return(
         <div className={s.map} style={{gridTemplateColumns: 'repeat('+props.width+','+props.cell+'px)', gridTemplateRows: 'repeat('+props.height+','+props.cell+'px)'}}>
-            {colums_ind.map((item) => {
+            {colums_ind.map((row) => {
                     return(
-                        rows_ind.map((item) => {
+                        rows_ind.map((column) => {
                             return(
-                                <Cell key={item}/>
+                                <Cell row={row} column={column}/>
                             )
                         })
                     )

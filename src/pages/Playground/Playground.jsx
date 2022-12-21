@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import Map from "../../components/Body/Map/Map";
+import Map from "../../components/Map/Map";
+import s from "./Playground.module.css"
 
  export default function Playground(){
     const [rangex, setRangex] = useState(20)
@@ -8,17 +9,17 @@ import Map from "../../components/Body/Map/Map";
     return(
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <h1>Playground</h1>
-            <select onChange={(e) => setRangex(e.target.value)} style={{marginBottom: '20px', width: 'fit-content'}}>
+            <select onChange={(e) => setRangex(e.target.value)} className={s.control}>
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+                <option value={20} selected={true}>20</option>
+            </select>
+            <select onChange={(e) => setRangey(e.target.value)} className={s.control}>
                 <option value={10}>10</option>
                 <option value={15}>15</option>
                 <option value={20}>20</option>
             </select>
-            <select onChange={(e) => setRangey(e.target.value)} style={{marginBottom: '20px', width: 'fit-content'}}>
-                <option value={10}>10</option>
-                <option value={15}>15</option>
-                <option value={20}>20</option>
-            </select>
-            <input type={Number} onChange={(e) => setCell(e.target.value)} style={{marginBottom: '20px', width: 'fit-content'}}/>
+            <input type={Number} onChange={(e) => setCell(e.target.value)} className={s.control} value={cell}/>
             <Map width={rangex} height={rangey} cell={cell}/>
         </div>
     )
