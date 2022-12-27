@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Map from "../../components/Map/Map";
 import s from "./Playground.module.css"
+import maps from "../../test_data/maps.json"
 
  export default function Playground(){
     const [rangex, setRangex] = useState(20)
     const [rangey, setRangey] = useState(10)
     const [cell, setCell] = useState(60)
+    const [data, setData] = useState({})
+    useEffect(() => {
+        setData({...data, x: rangex, y: rangey, cells_size: cell})
+        console.log(data)
+    }, [rangex, rangey, cell])
     return(
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <h1>Playground</h1>
@@ -20,7 +26,8 @@ import s from "./Playground.module.css"
                 <option value={20}>20</option>
             </select>
             <input type='number' onChange={(e) => setCell(e.target.value)} className={s.control} value={cell}/>
-            <Map width={rangex} height={rangey} cell={cell}/>
+            <Map width={rangex} height={rangey} cell={cell} data={data} setData={setData}/>
+            <button>save</button>
         </div>
     )
  }
