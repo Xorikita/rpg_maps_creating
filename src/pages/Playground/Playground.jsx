@@ -9,17 +9,17 @@ import s from "./Playground.module.css"
     return(
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <h1>Playground</h1>
-            <select onChange={(e) => setRangex(e.target.value)} className={s.control}>
+            <select onChange={(e) => setRangex(e.target.value)} className={s.control} defaultValue={20}>
                 <option value={10}>10</option>
                 <option value={15}>15</option>
-                <option value={20} selected={true}>20</option>
+                <option value={20}>20</option>
             </select>
             <select onChange={(e) => setRangey(e.target.value)} className={s.control}>
                 <option value={10}>10</option>
                 <option value={15}>15</option>
                 <option value={20}>20</option>
             </select>
-            <input type={Number} onChange={(e) => setCell(e.target.value)} className={s.control} value={cell}/>
+            <input type='number' onChange={(e) => setCell(e.target.value)} className={s.control} value={cell}/>
             <Map width={rangex} height={rangey} cell={cell}/>
         </div>
     )

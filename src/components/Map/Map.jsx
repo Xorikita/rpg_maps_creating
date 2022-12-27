@@ -4,7 +4,7 @@ import Cell from "./Cell/Cell";
 import { Presets } from "../../contexts/Context";
 
    function Map(props){
-    const [width, setWidth] = useState(props.width)
+    // const [width, setWidth] = useState(props.width)
     const rows_ind = Array.from({length: props.height}, (_, index) => index + 1);
     const colums_ind = Array.from({length: props.width}, (_, index) => index + 1);
     const [presets, setPresets] = useState([])
@@ -15,7 +15,7 @@ import { Presets } from "../../contexts/Context";
                     return(
                         rows_ind.map((column) => {
                             return(
-                                <Cell row={row} column={column}/>
+                                <Cell row={row} column={column} key={column+'-'+row}/>
                             )
                         })
                     )

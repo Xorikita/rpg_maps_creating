@@ -5,13 +5,16 @@ import PresetSelector from "../PresetSelector/PresetSelector";
 
 function Cell(props){
     let data = {
-        style: {}
+        style: {},
+        atributes: {}
     }
     const[modal, setModal] = useState(false)
     const[cell, setCell] = useState(data)
-    const changeCell = (key, value) => {
-        data.style[key] = value
-        setCell(data)
+    const changeStyle = (key, value) => {
+        setCell({...cell, style: {...cell.style, [key]: value}});
+    }
+    const changeAtributes = (key, value) => {
+        setCell({...cell, atributes: {...cell.atributes, [key]: value}});
     }
     const canselModal = () => {
         data = {}
@@ -29,23 +32,23 @@ function Cell(props){
         }
     }
     return(
-        <div className={s.cell} onClick={(e) => openModal(e)} style={cell.style} row={props.row} column={props.column} data-action={data.action+','+data.count}>
+        <div className={s.cell} onClick={(e) => openModal(e)} style={cell.style} {...cell.atributes} row={props.row} column={props.column}>
             <Modal active={modal} setActive={setModal}>
                 <div className={s.options}>
                     <span>Фон</span>
-                    <input onChange={(e) => changeCell('background', e.target.value)}/>
+                    <input onChange={(e) => changeStyle('background', e.target.value)}/>
                     <span>Картинка</span>
-                    <input onChange={(e) => changeCell('backgroundImage', 'url("'+e.target.value+'")')}/>
+                    <input onChange={(e) => changeStyle('backgroundImage', 'url("'+e.target.value+'")')}/>
                     <span>Действие</span>
-                    <select>
-                        <option value='none' selected={true}>Нет</option>
+                    <select onChange={(e) => changeAtributes('data-type', e.target.value)}>
+                        <option value='none'>Нет</option>
                         <option value='moveto'>Идти на</option>
                         <option value='stan'>Пропуск ходов</option>
                         <option value='moveagain'>Ходить еще</option>
                     </select>
                     <span>Число действий</span>
-                    <input type={"number"}></input>
-                    <PresetSelector data={cell} choose={choosePreset}/>
+                    <input type={"number"} onChange={(e) => changeAtributes('data-count', e.target.value)}></input>
+                    <PresetSelector data={cell} choose={choosePreset} onClick={() => setModal(false)}/>
                     <button onClick={() => setModal(false)}>Ок</button>
                     <button onClick={() => canselModal()}>Очистить</button>
                 </div>
