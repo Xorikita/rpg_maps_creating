@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import Map from "../../components/Map/Map";
 import s from "./Playground.module.css"
-import maps from "../../test_data/maps.json"
+// import maps from "../../test_data/maps.json"
 
  export default function Playground(){
     const [rangex, setRangex] = useState(20)
     const [rangey, setRangey] = useState(10)
     const [cell, setCell] = useState(60)
-    const [data, setData] = useState({})
+    const [data, setData] = useState({x: rangex, y: rangey, cells_size: cell, cells_ids: []})
     useEffect(() => {
         setData({...data, x: rangex, y: rangey, cells_size: cell})
         console.log(data)

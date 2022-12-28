@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import s from "./Cell.module.css"
 import Modal from "../../Modal/Modal";
 import PresetSelector from "../PresetSelector/PresetSelector";
 
 function Cell(props){
     let data = {
+        row: props.row,
+        column: props.column,
         style: {},
         atributes: {}
     }
@@ -31,6 +33,13 @@ function Cell(props){
             setCell(data)
         }
     }
+    // useEffect(() => {
+    //     let new_mass = props.data.cells_ids
+    //     let curcell = new_mass.find(item => item.row === cell.row && item.column === cell.column)
+    //     new_mass.indexOf(curcell) != -1? new_mass[new_mass.indexOf(curcell)] = cell : new_mass.push(cell)
+    //     props.setData({...props.data, cells_ids: new_mass})
+    //     // console.log(props.data)
+    // }, [modal])
     return(
         <div className={s.cell} onClick={(e) => openModal(e)} style={cell.style} {...cell.atributes} row={props.row} column={props.column}>
             <Modal active={modal} setActive={setModal}>

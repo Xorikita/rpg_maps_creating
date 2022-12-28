@@ -14,11 +14,12 @@ import { Presets } from "../../contexts/Context";
     return(
         <div className={s.map} style={{gridTemplateColumns: 'repeat('+props.width+','+props.cell+'px)', gridTemplateRows: 'repeat('+props.height+','+props.cell+'px)'}}>
             <Presets.Provider value={[presets, setPresets]}>
+                {/* {props.setData({...props.data, presets: presets, cells_ids: []})} */}
                 {colums_ind.map((row) => {
                     return(
                         rows_ind.map((column) => {
                             return(
-                                <Cell row={row} column={column} key={column+'-'+row}/>
+                                <Cell row={row} column={column} key={column+'-'+row} data={props.data} setData={props.setData}/>
                             )
                         })
                     )

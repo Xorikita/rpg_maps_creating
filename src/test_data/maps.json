@@ -1,9 +1,17 @@
 {
-    "Title": "Friday the 13th",
-    "Year": "2009",
-    "Rated": "R",
-    "Released": "13 Feb 2009",
-    "Runtime": "97 min",
-    "Genre": "Horror, Mystery, Thriller",
-    "Director": "Marcus Nispel"
+    "x": "20",
+    "y": 10,
+    "cells_size": "40",
+    "presets": [
+        {
+            "name": "start",
+            "data": {
+                "style": {
+                    "background": "yellow",
+                    "backgroundImage": "url(\"https://cdn-icons-png.flaticon.com/512/1768/1768116.png\")"
+                },
+                "atributes": {}
+            }
+        }
+    ]
 }
