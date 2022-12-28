@@ -29,17 +29,17 @@ function Cell(props){
     }
     const choosePreset = (preset) =>{
         if(preset){
-            data = preset.data
-            setCell(data)
+            setCell({...cell, style: preset.data.style, atributes: preset.data.atributes})
+            // console.log(data)
         }
     }
-    // useEffect(() => {
-    //     let new_mass = props.data.cells_ids
-    //     let curcell = new_mass.find(item => item.row === cell.row && item.column === cell.column)
-    //     new_mass.indexOf(curcell) != -1? new_mass[new_mass.indexOf(curcell)] = cell : new_mass.push(cell)
-    //     props.setData({...props.data, cells_ids: new_mass})
-    //     // console.log(props.data)
-    // }, [modal])
+    useEffect(() => {
+        let new_mass = props.data.cells_ids
+        let curcell = new_mass.find(item => item.row === cell.row && item.column === cell.column)
+        new_mass.indexOf(curcell) != -1? new_mass[new_mass.indexOf(curcell)] = cell : new_mass.push(cell)
+        props.setData({...props.data, cells_ids: new_mass})
+        console.log('setcell')
+    }, [cell])
     return(
         <div className={s.cell} onClick={(e) => openModal(e)} style={cell.style} {...cell.atributes} row={props.row} column={props.column}>
             <Modal active={modal} setActive={setModal}>

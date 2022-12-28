@@ -10,7 +10,6 @@ import s from "./Playground.module.css"
     const [data, setData] = useState({x: rangex, y: rangey, cells_size: cell, cells_ids: []})
     useEffect(() => {
         setData({...data, x: rangex, y: rangey, cells_size: cell})
-        console.log(data)
     }, [rangex, rangey, cell])
     return(
         <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -27,7 +26,7 @@ import s from "./Playground.module.css"
             </select>
             <input type='number' onChange={(e) => setCell(e.target.value)} className={s.control} value={cell}/>
             <Map width={rangex} height={rangey} cell={cell} data={data} setData={setData}/>
-            <button>save</button>
+            <button onClick={() => {console.log(data)}}>save</button>
         </div>
     )
  }

@@ -11,14 +11,14 @@ function PresetSelector(props){
     const choosePreset = (e) => {
         props.choose(presets.find(preset => preset.name === e.target.value))
         setCurrentPreset(e.target.value)
-        console.log(currentPreset)
+        // console.log(currentPreset)
     }
     const addPreset = () => {
         let presets_data = []
         presets_data.push(...presets)
         new_preset.data = props.data
         new_preset.name = presetName || undefined
-        console.log(currentPreset)
+        // console.log(currentPreset)
         currentPreset === 'new'? presets_data.push(new_preset) : presets_data[presets_data.indexOf(presets_data.find(preset => preset.name === currentPreset))] = new_preset
         if(new_preset.name){
             setPresets(presets_data)
